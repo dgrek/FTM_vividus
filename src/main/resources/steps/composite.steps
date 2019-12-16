@@ -1,0 +1,15 @@
+Composite: When I create trello board and save name to story variable '$boardName'
+When I initialize the STORY variable `<boardName>` with value `#{generate(App.name)}`
+Given request body: ''
+When I issue a HTTP POST request for a resource with the URL 'https://trello.com/1/boards?name=<boardName>&token=${token}&key=${APIkey}'
+Then the response code is equal to '200'
+
+
+Composite: When I log in as user with '$email' and '$password'
+Given I am on the main application page
+When I click on element located `By.xpath(//header//a[@href='/login'])`
+Then the page with the URL containing '/login' is loaded
+When I enter `<email>` in field located `By.xpath(//input[@type='email'])`
+When I enter `<password>` in field located `By.xpath(//input[@type='password'])`
+When I click on element located `By.xpath(//input[@id='login'])`
+
